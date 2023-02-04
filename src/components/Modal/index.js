@@ -5,7 +5,7 @@ import React from 'react'
 import tw from 'twrnc'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function Modal({ visible, type, close, onConfirm = () => { }, current_wallet_value, credit_limit, setCreditLimit }) {
+export default function Modal({ visible, type, close, onConfirm = () => { }, current_wallet_value, credit_limit, setCreditLimit, showConfetti }) {
   const [value, setValue] = React.useState(0)
   const input_ref = React.useRef(null)
   const [final_value, setFinalValue] = React.useState(0)
@@ -61,7 +61,7 @@ export default function Modal({ visible, type, close, onConfirm = () => { }, cur
               <Text style={tw`text-xl font-bold ${parseFloat(value) ? final_value < 0 ? "text-red-500" : "text-green-500" : "text-gray-500"}`}>
                 <Text style={tw`font-normal`}>Valor final:</Text> R$ {final_value},00
               </Text>
-              <TO onPress={() => value ? [onConfirm(final_value), close()] : {}} style={tw`my-4 w-full h-[64px] ${parseFloat(value) ? type === 'payment' ? "bg-[#D42b15]" : "bg-[#34BE82]" : "bg-[#aaa]"} rounded-[8px] flex items-center justify-center `}>
+              <TO onPress={() => value ? [onConfirm(final_value), close(), showConfetti(type === 'receive')] : {}} style={tw`my-4 w-full h-[64px] ${parseFloat(value) ? type === 'payment' ? "bg-[#D42b15]" : "bg-[#34BE82]" : "bg-[#aaa]"} rounded-[8px] flex items-center justify-center `}>
                 <Text style={tw`text-xl uppercase text-white font-semibold`}>Confirmar</Text>
               </TO>
               {

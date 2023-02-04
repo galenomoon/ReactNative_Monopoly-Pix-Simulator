@@ -14,7 +14,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen options={{ headerShown: false }} name="Lobby" component={Lobby} />
+        {/* <Stack.Screen options={{ headerShown: false }} name="Lobby" component={Lobby} /> */}
         <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
