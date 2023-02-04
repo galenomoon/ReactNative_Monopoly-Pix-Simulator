@@ -19,12 +19,12 @@ import Modal from '../../components/Modal'
 import avatars from '../../utils/characters';
 
 export default function Home() {
-  const [credit_limit, setCreditLimit] = React.useState(1500)
-  const [debit, setDebit] = React.useState(1500)
   const [modalVisible, setModalVisible] = React.useState({ visible: false, type: '' })
-  const [showAvatars, setShowAvatars] = React.useState(false)
   const [showCurrentDebit, setShowCurrentDebit] = React.useState(true)
+  const [credit_limit, setCreditLimit] = React.useState(1500)
+  const [showAvatars, setShowAvatars] = React.useState(false)
   const [avatar_index, setAvatarIndex] = React.useState(0)
+  const [debit, setDebit] = React.useState(1500)
   const confetti = React.useRef(null)
 
   function resetGame() {
@@ -132,7 +132,7 @@ export default function Home() {
             <View style={tw`flex flex-row items-center`}>
               <Text style={tw`text-lg font-semibold text-black/40 mt-1`}>Limite disponível de</Text>
               <TO onPress={() => setModalVisible({ visible: true, type: 'limit_setting' })}>
-                <Text style={tw`text-lg text-[#D42b15] font-extrabold`}> R$ {currencyValue(credit_limit)}</Text>
+                <Text style={tw`text-lg text-[#D42b15] font-extrabold`}> R$ {credit_limit}</Text>
               </TO>
             </View>
           </View>
